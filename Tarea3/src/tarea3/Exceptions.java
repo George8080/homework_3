@@ -1,5 +1,5 @@
 
-package maquina;
+package tarea3;
 
 
 class NoHayBebidaException extends Exception {

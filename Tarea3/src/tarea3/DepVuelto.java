@@ -1,5 +1,5 @@
 
-package maquina;
+package tarea3;
 
 import java.util.ArrayList;
 
@@ -22,11 +22,6 @@ public class DepVuelto{
     
     public void addMoneda(Moneda mon){
         m.add(mon);
-    }
-    
-    public void removeMoneda(Moneda mon){
-        m.remove(mon);
-    
     }
     
 }

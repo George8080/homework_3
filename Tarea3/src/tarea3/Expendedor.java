@@ -1,7 +1,5 @@
 
-package maquina;
-
-import java.util.ArrayList;
+package tarea3;
         
 public class Expendedor{
     private Deposito Sprite;

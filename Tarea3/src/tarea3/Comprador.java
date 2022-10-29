@@ -1,5 +1,8 @@
-package maquina;
+
+package tarea3;
+
 import java.util.ArrayList;
+import javax.swing.JButton;
 
 public class Comprador {
     private int cantidadTotal;
@@ -7,8 +10,7 @@ public class Comprador {
 
     private Bebida bebida;
     
-    public Comprador(Moneda mon, int tipoBebida, Expendedor exp) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException{ 
-        ArrayList<Moneda> moneda = new ArrayList<>();
+    public Comprador(Moneda mon, int tipoBebida, Expendedor exp){ 
         sabor = null;
         try{
             bebida = exp.ComprarBebida(tipoBebida, mon);
@@ -34,5 +36,7 @@ public class Comprador {
     public String queBebiste(){
         return  sabor;
     }
+    
+    public void paint(){}
 
 }

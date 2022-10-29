@@ -1,5 +1,5 @@
-package maquina;
 
+package tarea3;
 
 abstract class Bebida {
     private int serie;

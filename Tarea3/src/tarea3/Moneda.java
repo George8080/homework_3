@@ -1,5 +1,5 @@
-package maquina;
 
+package tarea3;
 
 public abstract class Moneda {
     private DepVuelto dep;
