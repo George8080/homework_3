@@ -15,14 +15,14 @@ public class PanelPrincipal extends JPanel{
     private Expendedor exp;
 
     public PanelPrincipal () {
-    exp = new Expendedor (2, 1000);
+    exp = new Expendedor (4, 100);
     com = new Comprador(mon1500, 1, exp);
     this.setBackground(Color.white);
     }
     
     public void paint (Graphics g) {
         super.paint(g); 
-        //com.paint(g); 
+        com.paint(g); 
         //exp.paint(g)
     }
 }

@@ -1,6 +1,8 @@
 
 package tarea3;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import javax.swing.JButton;
 
@@ -13,7 +15,7 @@ public class Comprador {
     public Comprador(Moneda mon, int tipoBebida, Expendedor exp){ 
         sabor = null;
         try{
-            bebida = exp.ComprarBebida(tipoBebida, mon);
+            exp.ComprarBebida(tipoBebida, mon);
             sabor = bebida.beber();
         }catch (PagoIncorrectoException | NoHayBebidaException | PagoInsuficienteException e){
             System.out.println(e.getMessage());
@@ -37,6 +39,10 @@ public class Comprador {
         return  sabor;
     }
     
-    public void paint(){}
+    public void paint(Graphics g){
+        Graphics2D buyer = (Graphics2D)g;
+        
+        buyer.drawLine(0, 0,100, 100);
+    }
 
 }

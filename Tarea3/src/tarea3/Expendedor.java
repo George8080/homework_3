@@ -23,9 +23,10 @@ public class Expendedor{
 
     }
     
-    public Bebida ComprarBebida(int num, Moneda m) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException{
+    public void ComprarBebida(int num, Moneda m) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException{
         Bebida drink = null;
         String tipoBebida = null;
+        Deposito Bebida=null;
         dep2=new DepVuelto();
         if(m != null){
             if(m.getValor() >= money){
@@ -50,7 +51,7 @@ public class Expendedor{
                         Moneda cien = new Moneda100();
                         dep2.addMoneda(cien);
                     }
-                    return drink;
+                        //
                 }
                 else if(tipoBebida != null){
                     dep2.addMoneda(m);
