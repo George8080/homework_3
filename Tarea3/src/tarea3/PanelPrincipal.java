@@ -1,4 +1,3 @@
-
 package tarea3;
 
 import javax.swing.JPanel;
@@ -15,9 +14,9 @@ public class PanelPrincipal extends JPanel{
     private Expendedor exp;
 
     public PanelPrincipal () {
-    exp = new Expendedor (4, 100);
+    exp = new Expendedor (2, 1000);
     com = new Comprador(mon1500, 1, exp);
-    this.setBackground(Color.white);
+    this.setBackground(Color.gray);
     }
     
     public void paint (Graphics g) {

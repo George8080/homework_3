@@ -1,6 +1,6 @@
-
 package tarea3;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -10,13 +10,13 @@ public class Comprador {
     private int cantidadTotal;
     private String sabor;
 
-    private Bebida bebida;
+    private DepProductos bebida;
     
     public Comprador(Moneda mon, int tipoBebida, Expendedor exp){ 
         sabor = null;
         try{
             exp.ComprarBebida(tipoBebida, mon);
-            sabor = bebida.beber();
+            //sabor = bebida.beber();
         }catch (PagoIncorrectoException | NoHayBebidaException | PagoInsuficienteException e){
             System.out.println(e.getMessage());
         }finally{
@@ -42,7 +42,27 @@ public class Comprador {
     public void paint(Graphics g){
         Graphics2D buyer = (Graphics2D)g;
         
-        buyer.drawLine(0, 0,100, 100);
+         buyer.setColor(Color.WHITE);   //cabeza
+         buyer.fillOval(42, 150, 50, 50);
+         
+         buyer.setColor(Color.red);         //polera
+         buyer.fillRect(30,200 , 70, 120);
+         
+         buyer.setColor(Color.blue);        //pierna izquierda
+         buyer.fillRect(30,320 , 40, 20);
+         
+         buyer.setColor(Color.blue);        //pierna izquierda
+         buyer.fillRect(30,320 , 30, 120);
+         
+          buyer.setColor(Color.blue);       //pierna derecha
+         buyer.fillRect(70,320 , 30, 120);
+         
+         buyer.setColor(Color.black);       // pie izquierdo
+         buyer.fillRect(30,420 , 37, 20);
+         
+         buyer.setColor(Color.black);       // pie derecho
+         buyer.fillRect(70,420 , 37, 20);
+      
     }
 
 }

@@ -1,14 +1,15 @@
-
 package tarea3;
         
 public class Expendedor{
     private Deposito Sprite;
     private Deposito Fanta;
     private Deposito Coke;
+    private DepProductos Producto;
     private DepVuelto dep2;
     private int money;
     
     public Expendedor(int cant, int precio){
+        Producto=new DepProductos();
         Coke= new Deposito(cant);
         Sprite= new Deposito(cant);
         Fanta= new Deposito(cant);
@@ -26,7 +27,6 @@ public class Expendedor{
     public void ComprarBebida(int num, Moneda m) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException{
         Bebida drink = null;
         String tipoBebida = null;
-        Deposito Bebida=null;
         dep2=new DepVuelto();
         if(m != null){
             if(m.getValor() >= money){
@@ -51,7 +51,7 @@ public class Expendedor{
                         Moneda cien = new Moneda100();
                         dep2.addMoneda(cien);
                     }
-                        //
+                    Producto.addBebida(drink);
                 }
                 else if(tipoBebida != null){
                     dep2.addMoneda(m);
@@ -68,7 +68,10 @@ public class Expendedor{
         } else throw new PagoIncorrectoException("Error: No ha ingresado monedas.");
     }
     public Moneda getVuelto() {
-        return dep2.getMoneda();
-        
+        return dep2.getMoneda();  
+    }
+    
+    public Bebida getBebida() {
+        return Producto.getBebida();
     }
 }
