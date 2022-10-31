@@ -13,8 +13,8 @@ public class Comprador {
     public Comprador(Moneda mon, int tipoBebida, Expendedor exp){ 
         sabor = null;
         try{
-            bebida = exp.ComprarBebida(tipoBebida, mon);
-            sabor = bebida.beber();
+            exp.ComprarBebida(tipoBebida, mon);
+            //sabor = bebida.beber();
         }catch (PagoIncorrectoException | NoHayBebidaException | PagoInsuficienteException e){
             System.out.println(e.getMessage());
         }finally{

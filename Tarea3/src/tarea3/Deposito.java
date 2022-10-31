@@ -1,6 +1,9 @@
 
 package tarea3;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 
@@ -8,7 +11,7 @@ public class Deposito{
     private ArrayList<Bebida> v;
     
     public Deposito(int cant){
-        v = new ArrayList<>(cant);
+        v = new ArrayList<Bebida>(cant);
 
     }
     public Bebida getBebida(){
@@ -20,5 +23,13 @@ public class Deposito{
     }
     public void addBebida(Bebida drink){
         v.add(drink);
+    }
+    public void paint(Graphics g, int x, int y){
+        Graphics2D exp = (Graphics2D)g;
+        exp.setColor(Color.gray);
+        exp.fillRect(x, y, 40, 200);
+        for(int i=0; i<v.size();i++){
+            v.get(i).paint(g,x+5,y+200-22*(i+1));
+        }
     }
 }
