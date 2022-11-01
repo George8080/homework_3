@@ -27,22 +27,25 @@ abstract class Bebida {
         Graphics2D exp = (Graphics2D)g;
         if(tipo == 3){
             exp.setColor(new Color(255,120,0));
-            exp.fillRect(x, y, 30, 20);
-            exp.setColor(Color.blue);
-            exp.fillRect(x+10, y, 10, 20);
         }
         else if(tipo == 2){
             exp.setColor(Color.white);
-            exp.fillRect(x, y, 30, 20);
-            exp.setColor(Color.green);
-            exp.fillRect(x+10, y, 10, 20);
         }
         else if(tipo == 1){
             exp.setColor(Color.red);
-            exp.fillRect(x, y, 30, 20);
-            exp.setColor(Color.white);
-            exp.fillRect(x+10, y, 10, 20);
         }
+        exp.fillRect(x, y, 30, 20);
+        
+        if(tipo == 3){
+            exp.setColor(Color.blue);
+        }
+        else if(tipo == 2){
+            exp.setColor(Color.green);
+        }
+        else if(tipo == 1){
+            exp.setColor(Color.white);
+        }
+        exp.fillRect(x+10, y+1, 10, 18);
     }
 }
 

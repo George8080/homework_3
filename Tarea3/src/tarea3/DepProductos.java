@@ -23,7 +23,7 @@ public class DepProductos {
     public void paint(Graphics g, int x,int y){
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.gray);
-        exp.fillRect(x, y, 140, 40);
+        exp.fillRect(x, y+10, 140, 30);
         beb.paint(g, x+55, y+20);
     }
 }

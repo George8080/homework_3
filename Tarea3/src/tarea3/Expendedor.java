@@ -87,8 +87,8 @@ public class Expendedor{
         exp.setColor(Color.black);
         exp.fillRect(x, y, 250, 300);
         Producto.paint(g,x+90,y+240);
-        Coke.paint(g,x+90,y+20);
-        Sprite.paint(g,x+140,y+20);
-        Fanta.paint(g,x+190,y+20);
+        Coke.paint(g,x+90,y+18);
+        Sprite.paint(g,x+140,y+18);
+        Fanta.paint(g,x+190,y+18);
     }
 }
