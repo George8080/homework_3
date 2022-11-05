@@ -27,9 +27,9 @@ public class Deposito{
     public void paint(Graphics g, int x, int y){
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.gray);
-        exp.fillRect(x, y, 40, 200);
+        exp.fillRect(x, y, 40, 222);
         for(int i=0; i<v.size();i++){
-            v.get(i).paint(g,x+5,y+200-22*(i+1));
+            v.get(i).paint(g,x+5,y+222-22*(i+1));
         }
     }
 }

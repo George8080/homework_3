@@ -90,5 +90,6 @@ public class Expendedor{
         Coke.paint(g,x+90,y+18);
         Sprite.paint(g,x+140,y+18);
         Fanta.paint(g,x+190,y+18);
+        dep2.paint(g,x+60,y+30);
     }
 }
