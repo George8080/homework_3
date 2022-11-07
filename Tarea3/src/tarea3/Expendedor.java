@@ -18,6 +18,7 @@ public class Expendedor{
         Coke= new Deposito(cant);
         Sprite= new Deposito(cant);
         Fanta= new Deposito(cant);
+        dep2 = new DepVuelto();
         
         money = precio;
         
@@ -32,7 +33,6 @@ public class Expendedor{
     public void ComprarBebida(int num, Moneda m) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException{
         Bebida drink = null;
         String tipoBebida = null;
-        dep2=new DepVuelto();
         if(m != null){
             if(m.getValor() >= money){
                 switch (num) {
@@ -53,7 +53,7 @@ public class Expendedor{
                 }
                 if(drink != null){
                     for(int i = 0; i < (m.getValor()-money)/100;i++){
-                        Moneda cien = new Moneda100();
+                        Moneda cien = new Moneda100(100);
                         dep2.addMoneda(cien);
                     }
                     Producto.addBebida(drink);
@@ -81,15 +81,25 @@ public class Expendedor{
     }
     
     public void paint(Graphics g){
-        int x = 220;
-        int y = 150;
+        int x = 170;
+        int y = 75;
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.black);
-        exp.fillRect(x, y, 250, 300);
-        Producto.paint(g,x+90,y+240);
-        Coke.paint(g,x+90,y+18);
-        Sprite.paint(g,x+140,y+18);
-        Fanta.paint(g,x+190,y+18);
-        dep2.paint(g,x+60,y+30);
+        exp.fillRect(x, y, 300, 350);
+        Producto.paint(g,x+140,y+290);
+        Coke.paint(g,x+140,y+18);
+        Sprite.paint(g,x+190,y+18);
+        Fanta.paint(g,x+240,y+18);
+        dep2.paint(g,x+110,y+20);
+        
+        exp.setColor(Color.red);
+        exp.fillRect(x+50, y+30, 30, 20);
+        
+        exp.setColor(Color.green);
+        exp.fillRect(x+50, y+65, 30, 20);
+        
+        exp.setColor(new Color(255,120,0));
+        exp.fillRect(x+50, y+100, 30, 20);
+        
     }
 }

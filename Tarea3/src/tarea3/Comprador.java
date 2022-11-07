@@ -17,17 +17,22 @@ public class Comprador {
             //sabor = bebida.beber();
         }catch (PagoIncorrectoException | NoHayBebidaException | PagoInsuficienteException e){
             System.out.println(e.getMessage());
-        }finally{
-            Moneda d;
-            do{
-                d = exp.getVuelto();
-                if(d != null)
-                {
-                    cantidadTotal += d.getValor();
-                }
-            }while(d != null);
         }
-        
+    }
+    
+    public void getBebida(DepProductos drink){
+        bebida = drink.getBebida();
+        sabor = bebida.beber();
+    }
+    
+    public void getVuelto(Expendedor exp){
+        Moneda d;
+        do{
+            d = exp.getVuelto();
+            if(d != null){
+                cantidadTotal += d.getValor();
+            }
+        }while(d != null);
     }
     
     public int cuantoVuelto(){

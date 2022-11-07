@@ -6,11 +6,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 public abstract class Moneda {
+    private int serie;
+    public Moneda(int s){
+        serie = s;
+    }
     
-    public Moneda(){}
-    
-    public String getSerie(){
-        return this.toString();
+    public int getSerie(){
+        return serie;
     }
     
     public abstract int getValor();
@@ -19,7 +21,9 @@ public abstract class Moneda {
 }
 
 class Moneda1500 extends Moneda {
-    public Moneda1500(){}   
+    public Moneda1500(int s){
+        super(s);
+    }   
 
     @Override
     public int getValor() {
@@ -34,7 +38,9 @@ class Moneda1500 extends Moneda {
     }
 }
 class Moneda1000 extends Moneda {
-    public Moneda1000(){}
+    public Moneda1000(int s){
+        super(s);
+    }   
     
     @Override
     public int getValor() {
@@ -44,12 +50,14 @@ class Moneda1000 extends Moneda {
     @Override
     public void paint(Graphics g, int x, int y){
         Graphics2D exp = (Graphics2D)g;
-        exp.setColor(Color.yellow);
+        exp.setColor(Color.blue);
         exp.fillOval(x, y, 14, 14);
     }
 }
 class Moneda500 extends Moneda {
-    public Moneda500(){}
+    public Moneda500(int s){
+        super(s);
+    }   
     
     @Override
     public int getValor() {
@@ -59,12 +67,14 @@ class Moneda500 extends Moneda {
     @Override
     public void paint(Graphics g, int x, int y){
         Graphics2D exp = (Graphics2D)g;
-        exp.setColor(Color.yellow);
+        exp.setColor(Color.green);
         exp.fillOval(x, y, 14, 14);
     }
 }
 class Moneda100 extends Moneda {
-    public Moneda100(){}
+    public Moneda100(int s){
+        super(s);
+    }   
     
     @Override
     public int getValor() {
@@ -74,7 +84,7 @@ class Moneda100 extends Moneda {
     @Override
     public void paint(Graphics g, int x, int y){
         Graphics2D exp = (Graphics2D)g;
-        exp.setColor(Color.yellow);
+        exp.setColor(Color.red);
         exp.fillOval(x, y, 14, 14);
     }
 }

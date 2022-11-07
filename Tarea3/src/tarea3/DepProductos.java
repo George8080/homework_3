@@ -11,7 +11,9 @@ public class DepProductos {
     public DepProductos(){
         beb = null;
     }
-    
+    public Bebida verContenedor(){
+        return beb;
+    }
     public void addBebida(Bebida b){
         beb = b;
     }
@@ -24,6 +26,6 @@ public class DepProductos {
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.gray);
         exp.fillRect(x, y+10, 140, 30);
-        beb.paint(g, x+55, y+20);
+        if(beb != null) beb.paint(g, x+55, y+20);
     }
 }
