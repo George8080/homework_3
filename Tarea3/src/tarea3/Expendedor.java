@@ -80,9 +80,8 @@ public class Expendedor{
         return Producto.getBebida();
     }
     
-    public void paint(Graphics g){
-        int x = 170;
-        int y = 75;
+    public void paint(Graphics g, int x, int y){
+        
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.black);
         exp.fillRect(x, y, 300, 350);
