@@ -1,4 +1,3 @@
-
 package tarea3;
         
 import java.awt.Color;
@@ -73,7 +72,7 @@ public class Expendedor{
         } else throw new PagoIncorrectoException("Error: No ha ingresado monedas.");
     }
     public Moneda getVuelto() {
-        return dep2.getMoneda();  
+        return dep2.getMoneda(); 
     }
     
     public Bebida getBebida() {

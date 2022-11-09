@@ -1,4 +1,3 @@
-
 package tarea3;
 
 import javax.swing.JPanel;
@@ -8,9 +7,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class PanelPrincipal extends JPanel implements MouseListener{
-    Moneda mon100=new Moneda100(1000);
-    Moneda mon500=new Moneda500(2000);
-    Moneda mon1000=new Moneda1000(3000);
     Moneda mon1500=new Moneda1500(4000);
     int xExp = 170;
     int yExp = 83;
@@ -33,15 +29,15 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     }
     
     @Override
-    public void mouseClicked(MouseEvent me) {
+    public void mouseClicked(MouseEvent me) {                   //esto permite que con los clicks se puedan retirar bebidas y vuelto del expendedor
         int x = me.getX( );
         int y = me.getY( );
         System.out.println(x + " " + y);
         
-        if(x>=310 && x<=450 && y>=365 && y<=395 ){
+        if(x>=310 && x<=450 && y>=365 && y<=395 ){      
             System.out.println("Devolviendo bebida");
             if(com != null) com.getBebida(exp);
-            this.repaint();
+            this.repaint();                                                              
         }
         
         if(x>=220 && x<=245 && y>=325 && y<=350 ){

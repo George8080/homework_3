@@ -1,23 +1,20 @@
-
 package tarea3;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import javax.swing.JButton;
 
 public class Comprador {
     private int cantidadTotal;
     private String sabor;
-
     private Bebida bebida;
+    static public Billetera billetera= new Billetera();
+    static public DepComprador depBebida= new DepComprador();//creamos una variable estatica para que los compradores futuros tengan el mismo deposito de bebidas al ser creados
     
-    public Comprador(Moneda mon, int tipoBebida, Expendedor exp){ 
+    public Comprador(Moneda mon, int tipoBebida, Expendedor exp){
         sabor = null;
         try{
             exp.ComprarBebida(tipoBebida, mon);
-            //sabor = bebida.beber();
         }catch (PagoIncorrectoException | NoHayBebidaException | PagoInsuficienteException e){
             System.out.println(e.getMessage());
         }
@@ -26,11 +23,14 @@ public class Comprador {
     public void getBebida(Expendedor drink){
         bebida = drink.getBebida();
         if(bebida != null) sabor = bebida.beber();
+        depBebida.addBebida(bebida);
     }
     
     public void getVuelto(Expendedor exp){
         Moneda d;
         d = exp.getVuelto();
+        billetera.addMoneda(d);
+        
         if(d != null)
             cantidadTotal += d.getValor();
     }
@@ -43,34 +43,39 @@ public class Comprador {
     }
     
     public void paint(Graphics g){
+        int x=30; 
+        int y=200; 
         Graphics2D buyer = (Graphics2D)g;
         
+        billetera.paint(g);
+        depBebida.paint(g);
+        
          buyer.setColor(Color.WHITE);   //cabeza
-         buyer.fillOval(42, 150, 50, 50);
+         buyer.fillRect(x+12, y-50, 50, 50);
          
          buyer.setColor(Color.red);         //polera
-         buyer.fillRect(30,200 , 70, 120);
+         buyer.fillRect(x, y, 70, 120);
          
         buyer.setColor(Color.white);         //brazo derecho
-        buyer.fillRect(10, 200, 20, 120);
+        buyer.fillRect(x-20, y, 20, 120);
         
-        buyer.setColor(Color.white);         //polera
-        buyer.fillRect(100, 200, 20, 120);
+        buyer.setColor(Color.white);         //brazo izquierdo
+        buyer.fillRect(x+70, y, 20, 120);
          
          buyer.setColor(Color.blue);        //pierna derecha
-         buyer.fillRect(30,320 , 40, 20);
+         buyer.fillRect(x, y+120, 40, 20);
          
          buyer.setColor(Color.blue);        //pierna izquierda
-         buyer.fillRect(30,320 , 30, 120);
+         buyer.fillRect(x, y+120, 30, 120);
          
-          buyer.setColor(Color.blue);       //pierna derecha
-         buyer.fillRect(70,320 , 30, 120);
+          buyer.setColor(Color.blue);       //pantalon
+         buyer.fillRect(x+40, y+120 , 30, 120);
          
          buyer.setColor(Color.black);       // pie izquierdo
-         buyer.fillRect(30,420 , 37, 20);
+         buyer.fillRect(x, y+220 , 37, 20);
          
          buyer.setColor(Color.black);       // pie derecho
-         buyer.fillRect(70,420 , 37, 20);
+         buyer.fillRect(x+40,y+220 , 37, 20);
       
     }
 }
