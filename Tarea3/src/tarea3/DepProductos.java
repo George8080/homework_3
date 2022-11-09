@@ -25,7 +25,10 @@ public class DepProductos {
     public void paint(Graphics g, int x,int y){
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.gray);
-        exp.fillRect(x, y+10, 140, 30);
-        if(beb != null) beb.paint(g, x+55, y+20);
+        exp.fillRect(x, y, 220, 50);
+        if(beb != null){
+           beb.setXY(x+80, y+20);
+           beb.paint(g);
+        }
     }
 }

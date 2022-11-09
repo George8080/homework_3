@@ -19,15 +19,17 @@ public class Billetera {
   }
  
   public void paint(Graphics g){
-        int x = 30;
-        int y = 200;
+        int x = 80;
+        int y = 280;
         Graphics2D dep = (Graphics2D) g;
         dep.setColor(Color.gray);               //deposito de monedas de comprador
-        dep.fillRect(x - 17, y - 120, 140, 50);
+        dep.fillRect(x - 17, y - 120, 238, 102);
         
          for (int i=0; i<mon.size();i++){
-            if(i<7) mon.get(i).paint(g,x-15+(i*20), y-120);
-            else if(i>6) mon.get(i).paint(g,x-155+(i*20), y-90);
+            if(i<8) mon.get(i).paint(g,x-15+(i*30), y-120);
+            else if(i<16) mon.get(i).paint(g,x-255+(i*30), y-95);
+            else if(i<24) mon.get(i).paint(g, x-495+(i*30), y-70);
+            else if(i<32) mon.get(i).paint(g, x-735+(i*30), y-45);
         }
     }
 }

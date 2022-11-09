@@ -11,11 +11,11 @@ public class Comprador {
     static public Billetera billetera= new Billetera();
     static public DepComprador depBebida= new DepComprador();//creamos una variable estatica para que los compradores futuros tengan el mismo deposito de bebidas al ser creados
     
-    public Comprador(Moneda mon, int tipoBebida, Expendedor exp){
+    public Comprador(Moneda mon, int tipoBebida, Expendedor exp){ 
         sabor = null;
         try{
             exp.ComprarBebida(tipoBebida, mon);
-        }catch (PagoIncorrectoException | NoHayBebidaException | PagoInsuficienteException e){
+        }catch (PagoIncorrectoException | NoHayBebidaException | PagoInsuficienteException | DepositoOcupadoException e){
             System.out.println(e.getMessage());
         }
     }
@@ -43,8 +43,8 @@ public class Comprador {
     }
     
     public void paint(Graphics g){
-        int x=30; 
-        int y=200; 
+        int x=150; 
+        int y=350; 
         Graphics2D buyer = (Graphics2D)g;
         
         billetera.paint(g);

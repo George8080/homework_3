@@ -21,15 +21,18 @@ public class DepComprador {
     }
     
     public void paint (Graphics g){
-        int x= 30;
+        int x= 80;
         int y = 200;
         Graphics2D dep = (Graphics2D)g;
         dep.setColor(Color.gray);               //deposito de bebidas de comprador
-        dep.fillRect(x - 17, y - 180, 140, 50);
+        dep.fillRect(x - 17, y - 180, 238, 105);
         
          for(int i=0; i<beb.size();i++){
-            if(i<4) beb.get(i).paint(g,x-15+(i*35), y-180);
-            else if (i>3) beb.get(i).paint(g,x-155+(i*35), y-153);
+            
+            if(i<3) beb.get(i).setXY( x-14+(i*86), y-180); 
+            else if (i<6) beb.get(i).setXY( x-272+(i*86), y-143); 
+            else if(i<9) beb.get(i).setXY( x-530+(i*86), y-109); 
+            beb.get(i).paint(g);
         }
         
     }
