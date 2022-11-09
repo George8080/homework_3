@@ -21,3 +21,10 @@ class PagoInsuficienteException extends Exception {
         super(text);
     }
 }
+
+class DepositoOcupadoException extends Exception {
+    
+    public DepositoOcupadoException(String text) {
+        super(text);
+    }
+}

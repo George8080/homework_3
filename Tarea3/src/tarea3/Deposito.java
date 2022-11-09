@@ -23,12 +23,17 @@ public class Deposito{
     public void addBebida(Bebida drink){
         v.add(drink);
     }
+    
+    public int returnSize(){
+        return v.size();
+    }
     public void paint(Graphics g, int x, int y){
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.gray);
-        exp.fillRect(x, y, 40, 266);
+        exp.fillRect(x, y, 70, 399);
         for(int i=0; i<v.size();i++){
-            v.get(i).paint(g,x+5,y+266-22*(i+1));
+            v.get(i).setXY(x+5,y+399-33*(i+1));
+            v.get(i).paint(g);
         }
     }
 }

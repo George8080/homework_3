@@ -17,8 +17,7 @@ public class Comprador {
         sabor = null;
         try{
             exp.ComprarBebida(tipoBebida, mon);
-            //sabor = bebida.beber();
-        }catch (PagoIncorrectoException | NoHayBebidaException | PagoInsuficienteException e){
+        }catch (PagoIncorrectoException | NoHayBebidaException | PagoInsuficienteException | DepositoOcupadoException e){
             System.out.println(e.getMessage());
         }
     }

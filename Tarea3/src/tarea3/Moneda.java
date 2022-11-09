@@ -4,16 +4,29 @@ package tarea3;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.*;
+import static java.lang.String.valueOf;
+import javax.swing.*;
 
-public abstract class Moneda {
+public abstract class Moneda extends JLabel {
+    // "static public" conserva esta variable para todas las monedas creadas tengan una serie diferente.
+    static public int last_serie = 0;
     private int serie;
-    public Moneda(int s){
-        serie = s;
+    //JLabel ser;
+    //JLabel val;
+    public String ser;
+    //public String val;
+    public Moneda(){
+        serie = Moneda.last_serie;
+        Moneda.last_serie++;
+        ser = valueOf(serie);
+        //val = "$" + valueOf(this.getValor());
     }
     
     public int getSerie(){
         return serie;
     }
+    
     
     public abstract int getValor();
     public abstract void paint(Graphics g, int x, int y);
@@ -21,8 +34,7 @@ public abstract class Moneda {
 }
 
 class Moneda1500 extends Moneda {
-    public Moneda1500(int s){
-        super(s);
+    public Moneda1500(){
     }   
 
     @Override
@@ -34,12 +46,19 @@ class Moneda1500 extends Moneda {
     public void paint(Graphics g, int x, int y){
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.yellow);
-        exp.fillOval(x, y, 14, 14);
+        exp.fillOval(x, y, 24, 24);
+        exp.setColor(Color.black);
+        Font fuente=new Font("Monospaced", Font.BOLD, 15);
+        exp.setColor(Color.black);
+        exp.setFont(fuente);
+        exp.drawString(this.ser, x+6, y+20);
+//        fuente=new Font("Monospaced", Font.BOLD, 8);
+//        exp.setFont(fuente);
+//        exp.drawString(this.val, x+3, y+10);
     }
 }
 class Moneda1000 extends Moneda {
-    public Moneda1000(int s){
-        super(s);
+    public Moneda1000(){
     }   
     
     @Override
@@ -51,12 +70,18 @@ class Moneda1000 extends Moneda {
     public void paint(Graphics g, int x, int y){
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.blue);
-        exp.fillOval(x, y, 14, 14);
+        exp.fillOval(x, y, 24, 24);
+        Font fuente=new Font("Monospaced", Font.BOLD, 15);
+        exp.setColor(Color.black);
+        exp.setFont(fuente);
+        exp.drawString(this.ser, x+6, y+20);
+//        fuente=new Font("Monospaced", Font.BOLD, 8);
+//        exp.setFont(fuente);
+//        exp.drawString(this.val, x+3, y+10);
     }
 }
 class Moneda500 extends Moneda {
-    public Moneda500(int s){
-        super(s);
+    public Moneda500(){
     }   
     
     @Override
@@ -68,12 +93,19 @@ class Moneda500 extends Moneda {
     public void paint(Graphics g, int x, int y){
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.green);
-        exp.fillOval(x, y, 14, 14);
+        exp.fillOval(x, y, 24, 24);
+        exp.setColor(Color.black);
+        Font fuente=new Font("Monospaced", Font.BOLD, 15);
+        exp.setColor(Color.black);
+        exp.setFont(fuente);
+        exp.drawString(this.ser, x+6, y+20);
+//        fuente=new Font("Monospaced", Font.BOLD, 8);
+//        exp.setFont(fuente);
+//        exp.drawString(this.val, x+3, y+10);
     }
 }
 class Moneda100 extends Moneda {
-    public Moneda100(int s){
-        super(s);
+    public Moneda100(){
     }   
     
     @Override
@@ -84,7 +116,15 @@ class Moneda100 extends Moneda {
     @Override
     public void paint(Graphics g, int x, int y){
         Graphics2D exp = (Graphics2D)g;
+        
         exp.setColor(Color.red);
-        exp.fillOval(x, y, 14, 14);
+        exp.fillOval(x, y, 24, 24);
+        Font fuente=new Font("Monospaced", Font.BOLD, 15);
+        exp.setColor(Color.black);
+        exp.setFont(fuente);
+        exp.drawString(this.ser, x+6, y+18);
+//        fuente=new Font("Monospaced", Font.BOLD, 8);
+//        exp.setFont(fuente);
+//        exp.drawString(this.val, x+3, y+10);
     }
 }
