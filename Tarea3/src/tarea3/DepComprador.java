@@ -17,7 +17,10 @@ public class DepComprador {
     }
     
     public void addBebida(Bebida b){
+        if(b != null){
+            if(beb.size()==9) beb.remove(0);
             beb.add(b);
+        }
     }
     
     public void paint (Graphics g){
@@ -28,11 +31,10 @@ public class DepComprador {
         dep.fillRect(x - 17, y - 180, 238, 105);
         
          for(int i=0; i<beb.size();i++){
-            
             if(i<3) beb.get(i).setXY( x-14+(i*86), y-180); 
             else if (i<6) beb.get(i).setXY( x-272+(i*86), y-143); 
             else if(i<9) beb.get(i).setXY( x-530+(i*86), y-109); 
-            beb.get(i).paint(g);
+            if(i<9) beb.get(i).paint(g);
         }
         
     }

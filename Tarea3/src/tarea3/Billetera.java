@@ -15,7 +15,10 @@ public class Billetera {
   }
   
   public void addMoneda(Moneda m){
-      mon.add(m);
+      if(m != null){
+        if(mon.size()==32) mon.remove(0);
+        mon.add(m);
+      }
   }
  
   public void paint(Graphics g){

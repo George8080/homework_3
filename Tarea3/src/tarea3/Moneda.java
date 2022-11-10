@@ -12,8 +12,6 @@ public abstract class Moneda extends JLabel {
     // "static public" conserva esta variable para todas las monedas creadas tengan una serie diferente.
     static public int last_serie = 0;
     private int serie;
-    //JLabel ser;
-    //JLabel val;
     public String ser;
     //public String val;
     public Moneda(){
@@ -119,10 +117,18 @@ class Moneda100 extends Moneda {
         
         exp.setColor(Color.red);
         exp.fillOval(x, y, 24, 24);
-        Font fuente=new Font("Monospaced", Font.BOLD, 15);
+        Font fuente=new Font("Arial", Font.BOLD, 14);
         exp.setColor(Color.black);
         exp.setFont(fuente);
-        exp.drawString(this.ser, x+6, y+18);
+        int defPos = this.getSerie();
+        int posX = x+9;
+        int i = 0;
+        while(defPos/10!=0){
+            defPos /= 10;
+            posX -= 4;
+            i++;
+        }
+        exp.drawString(this.ser, posX, y+18);
 //        fuente=new Font("Monospaced", Font.BOLD, 8);
 //        exp.setFont(fuente);
 //        exp.drawString(this.val, x+3, y+10);
