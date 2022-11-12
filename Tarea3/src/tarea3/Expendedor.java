@@ -51,23 +51,40 @@ public class Expendedor{
         }
         if(Coke.returnSize()== 0){
             for(int i = 0; i < cant; i++){
-                Coke.addBebida(new CocaCola(3000+i,precio));
+                Coke.addBebida(new CocaCola(3000+serieC,precio));
                 serieC++;
             }
         }
         if(Sprite.returnSize()== 0){
             for(int i = 0; i < cant; i++){
-                Sprite.addBebida(new Sprite(2000+i,precio));
+                Sprite.addBebida(new Sprite(2000+serieS,precio));
                 serieS++;
             }
         }
     }
     
-    public void ComprarBebida(int num, Moneda m) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException, DepositoOcupadoException{
+    public void ComprarBebida(int num, int m) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException, DepositoOcupadoException{
         Bebida drink = null;
         String tipoBebida = null;
-        if(m != null){
-            if(m.getValor() >= money){
+        Moneda coin = null;
+        switch(m){
+            case 1:
+                coin = new Moneda1500();
+                break;
+            case 2:
+                coin = new Moneda1000();
+                break;
+            case 3:
+                coin = new Moneda500();
+                break;
+            case 4:
+                coin = new Moneda100();
+                break;
+            default:
+                coin = null;
+        }
+        if(coin != null){
+            if(coin.getValor() >= money){
                 if(Producto.verContenedor()==null){
                     switch (num) {
                         case 1 :
@@ -86,26 +103,26 @@ public class Expendedor{
                             break;
                     }
                     if(drink != null){
-                        for(int i = 0; i < (m.getValor()-money)/100;i++){
+                        for(int i = 0; i < (coin.getValor()-money)/100;i++){
                             Moneda cien = new Moneda100();
                             dep2.addMoneda(cien);
                         }
                         Producto.addBebida(drink);
                     }
                     else if(tipoBebida != null){
-                        dep2.addMoneda(m);
+                        dep2.addMoneda(coin);
                         throw new NoHayBebidaException("Error: No quedan "+tipoBebida+"s.");
                     }
                     else{
-                        dep2.addMoneda(m);
+                        dep2.addMoneda(coin);
                         throw new NoHayBebidaException("Error: Deposito incorrecto");
                     }
                 } else {    //COMENTAR
-                    dep2.addMoneda(m);
+                    dep2.addMoneda(coin);
                     throw new DepositoOcupadoException("Error: Contenedor ocupado.");
                 }
             } else {
-                dep2.addMoneda(m);
+                dep2.addMoneda(coin);
                 throw new PagoInsuficienteException("Error: Pago insuficiente.");
             }  
         } else throw new PagoIncorrectoException("Error: No ha ingresado monedas.");
@@ -134,10 +151,5 @@ public class Expendedor{
         exp.drawImage(this.sprite, x+25, y+100, 65, 50, null);
         
         exp.drawImage(this.fanta, x+25, y+160, 65, 50, null);
-        /*Font fuente=new Font("Monospaced", Font.BOLD, 50);
-        exp.setFont(fuente);
-        exp.drawString("Hola", 100, 50);
-        exp.drawString("Hey", x, y);
-        exp.drawString("Mundo", 100, 70);*/
     }
 }

@@ -45,11 +45,18 @@ class Moneda1500 extends Moneda {
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.yellow);
         exp.fillOval(x, y, 24, 24);
-        exp.setColor(Color.black);
-        Font fuente=new Font("Monospaced", Font.BOLD, 15);
+        Font fuente=new Font("Arial", Font.BOLD, 14);
         exp.setColor(Color.black);
         exp.setFont(fuente);
-        exp.drawString(this.ser, x+6, y+20);
+        int defPos = this.getSerie();
+        int posX = x+9;
+        int i = 0;
+        while(defPos/10!=0){
+            defPos /= 10;
+            posX -= 4;
+            i++;
+        }
+        exp.drawString(this.ser, posX, y+18);
 //        fuente=new Font("Monospaced", Font.BOLD, 8);
 //        exp.setFont(fuente);
 //        exp.drawString(this.val, x+3, y+10);
@@ -67,12 +74,20 @@ class Moneda1000 extends Moneda {
     @Override
     public void paint(Graphics g, int x, int y){
         Graphics2D exp = (Graphics2D)g;
-        exp.setColor(Color.blue);
+        exp.setColor(Color.cyan);
         exp.fillOval(x, y, 24, 24);
-        Font fuente=new Font("Monospaced", Font.BOLD, 15);
+        Font fuente=new Font("Arial", Font.BOLD, 14);
         exp.setColor(Color.black);
         exp.setFont(fuente);
-        exp.drawString(this.ser, x+6, y+20);
+        int defPos = this.getSerie();
+        int posX = x+9;
+        int i = 0;
+        while(defPos/10!=0){
+            defPos /= 10;
+            posX -= 4;
+            i++;
+        }
+        exp.drawString(this.ser, posX, y+18);
 //        fuente=new Font("Monospaced", Font.BOLD, 8);
 //        exp.setFont(fuente);
 //        exp.drawString(this.val, x+3, y+10);
@@ -92,11 +107,18 @@ class Moneda500 extends Moneda {
         Graphics2D exp = (Graphics2D)g;
         exp.setColor(Color.green);
         exp.fillOval(x, y, 24, 24);
-        exp.setColor(Color.black);
-        Font fuente=new Font("Monospaced", Font.BOLD, 15);
+        Font fuente=new Font("Arial", Font.BOLD, 14);
         exp.setColor(Color.black);
         exp.setFont(fuente);
-        exp.drawString(this.ser, x+6, y+20);
+        int defPos = this.getSerie();
+        int posX = x+9;
+        int i = 0;
+        while(defPos/10!=0){
+            defPos /= 10;
+            posX -= 4;
+            i++;
+        }
+        exp.drawString(this.ser, posX, y+18);
 //        fuente=new Font("Monospaced", Font.BOLD, 8);
 //        exp.setFont(fuente);
 //        exp.drawString(this.val, x+3, y+10);
