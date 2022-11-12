@@ -26,8 +26,9 @@ public class Comprador {
         if(bebida != null) sabor = bebida.beber();
     }
     public void drinkBebida(){
-        depBebida.addBebida(bebida);
+        if(bebida != null) depBebida.addBebida(bebida);
         bebida = null;
+        sabor = null;
     }
     
     public void getVuelto(Expendedor exp){
@@ -43,7 +44,7 @@ public class Comprador {
         return cantidadTotal;
     } 
     public String queBebiste(){
-        return  sabor;
+        return sabor;
     }
     
     public void paint(Graphics g, int an){
@@ -63,7 +64,7 @@ public class Comprador {
         buyer.setColor(Color.white);         //brazo izquierdo
         buyer.fillRect(x-20, y, 20, 120);
         
-        if(an == 1){
+        if(an == 1 && bebida != null){
             buyer.setColor(Color.red);         //polera
             buyer.fillRect(x+60, y, 40, 30); 
             bebida.setXY(x+50,y-40);

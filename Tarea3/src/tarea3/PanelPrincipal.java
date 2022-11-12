@@ -129,11 +129,13 @@ public class PanelPrincipal extends JPanel implements MouseListener, ActionListe
                 System.out.println("Devolviendo bebida");
                 if(com != null){
                     com.getBebida(exp);
-                    animation = 1;
-                    this.repaint();
-                    Timer t = new Timer(500, this);
-                    t.addActionListener(this);
-                    t.start();
+                    if(com.queBebiste()!=null){
+                        animation = 1;
+                        this.repaint();
+                        Timer t = new Timer(500, this);
+                        t.addActionListener(this);
+                        t.start();
+                    }
                 }
                 this.repaint();
             }
