@@ -1,13 +1,12 @@
 package tarea3;
         
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 public class Expendedor{
+    // Creacion de los atributos de la Expendedora
     private Deposito Sprite;
     private Deposito Fanta;
     private Deposito Coke;
@@ -23,12 +22,14 @@ public class Expendedor{
     private int serieC = 0;
     
     public Expendedor(int cant, int precio){
+        // Iniicializar los atributos.
         Producto = new DepProductos();
         Coke= new Deposito(cant);
         Sprite= new Deposito(cant);
         Fanta= new Deposito(cant);
         dep2 = new DepVuelto();
-        try{
+        money = precio;
+        try{    // Intentar buscar las imagenes y definirlas.
             img = ImageIO.read(getClass().getResource("bubbles.jpg"));
             coca = ImageIO.read(getClass().getResource("cocacola.jpg"));
             fanta = ImageIO.read(getClass().getResource("fanta.png"));
@@ -36,13 +37,13 @@ public class Expendedor{
         }catch(java.io.IOException e){
             System.out.println(e.getMessage());
         }
-        money = precio;
         
+        // Llenar los contenedores
         this.llenarContenedores(cant, precio);
-
     }
     
     public void llenarContenedores(int cant, int precio){
+        // Si algun deposito esta vacio rellenarla.
         if(Fanta.returnSize()== 0){
             for(int i = 0; i < cant; i++){
                 Fanta.addBebida(new Fanta(1000+serieF,precio));
@@ -64,9 +65,13 @@ public class Expendedor{
     }
     
     public void ComprarBebida(int num, int m) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException, DepositoOcupadoException{
+        // Metodo para comprar una bebida.
+        
+        // Preparar los elementos para utilizarlos.
         Bebida drink = null;
         String tipoBebida = null;
-        Moneda coin = null;
+        Moneda coin;
+        // Generar la moneda pedida.
         switch(m){
             case 1:
                 coin = new Moneda1500();
@@ -83,10 +88,11 @@ public class Expendedor{
             default:
                 coin = null;
         }
-        if(coin != null){
-            if(coin.getValor() >= money){
-                if(Producto.verContenedor()==null){
+        if(coin != null){   // Si hay una moneda...
+            if(coin.getValor() >= money){   // Si el valor alcanza para comprar...
+                if(Producto.verContenedor()==null){ // Si hay espacio para depositar una bebida en el recipiente...
                     switch (num) {
+                        // Comprar la bebida pedida y definir la bebida pedida.
                         case 1 :
                             drink = Coke.getBebida();
                             tipoBebida = "cocacola";
@@ -103,53 +109,63 @@ public class Expendedor{
                             break;
                     }
                     if(drink != null){
+                        // Si la compra fue exitosa devolver el vuelto en monedas de 100 y añadir la bebida al deposito de productos.
                         for(int i = 0; i < (coin.getValor()-money)/100;i++){
                             Moneda cien = new Moneda100();
                             dep2.addMoneda(cien);
                         }
                         Producto.addBebida(drink);
                     }
-                    else if(tipoBebida != null){
+                    else if(tipoBebida != null){ // Si no habian bebidas pero si se intento pedir una...
+                        // Devolver la moneda y lanzar su respectivo error (Que no quedan de la bebida pedida).
                         dep2.addMoneda(coin);
                         throw new NoHayBebidaException("Error: No quedan "+tipoBebida+"s.");
                     }
-                    else{
+                    else{   // Si se pidio un deposito no existente.
+                        // Devolver la moneda y lanzar su respectivo error (Ingreso mal el deposito).
                         dep2.addMoneda(coin);
                         throw new NoHayBebidaException("Error: Deposito incorrecto");
                     }
-                } else {    //COMENTAR
+                } else {    // Si ya hay una bebida en el deposito de productos.
+                    // Devolver la moneda y lanzar su respectivo error (El contenedor ya tiene una bebida).
                     dep2.addMoneda(coin);
                     throw new DepositoOcupadoException("Error: Contenedor ocupado.");
                 }
-            } else {
+            } else { // Si con la moneda ingresada no alcanza.
+                // Devolver la moneda y lanzar su respectivo error (El pago no alcanza).
                 dep2.addMoneda(coin);
                 throw new PagoInsuficienteException("Error: Pago insuficiente.");
             }  
         } else throw new PagoIncorrectoException("Error: No ha ingresado monedas.");
+        // Si no lanzar el error de que no se ingreso moneda para comprar.
     }
     public Moneda getVuelto() {
+        // Metodo para extraer una moneda del deposito de vuelto.
         return dep2.getMoneda();  
     }
     
     public Bebida getBebida() {
+        // Metodo para extraer la bebida del deposito de productos.
         return Producto.getBebida();
     }
     
-    
-    
     public void paint(Graphics g, int x, int y){
+        // Metodo para imprimir la expendedora.
         Graphics2D exp = (Graphics2D)g;
+        
+        // Usar la imagen para la expendedora.
         exp.drawImage(this.img, x, y, 420, 520, null);
+        
+        // Pintar los elementos de la expendedora.
         Producto.paint(g,x+180,y+430);
         Coke.paint(g,x+180,y+18);
         Sprite.paint(g,x+255,y+18);
         Fanta.paint(g,x+330,y+18);
         dep2.paint(g,x+110,y+40);
         
+        // Imprimir con las imagenes los botones para elegir la bebida.
         exp.drawImage(this.coca, x+25, y+40, 65, 50, null);
-        
         exp.drawImage(this.sprite, x+25, y+100, 65, 50, null);
-        
         exp.drawImage(this.fanta, x+25, y+160, 65, 50, null);
     }
 }
