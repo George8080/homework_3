@@ -8,7 +8,7 @@
   Bienvenidos a nuestra tarea donde encontrará 3 branches: main, expendedor y comprador.   
   En la branch comprador encontrará los avances inciales de la tarea además de la primera creación del comprador, en expendedor es donde finalmente terminamos haciendo la mayoría del trabajo y los avances finales.  
   
-  En main está el trabajo finalizado separado en 13 clases, se han hecho ediciones y cambios a la versión de la expendedora creada en la Tarea 2 a favor de adecuarnos a las exigencias de la tarea 3.  
+  En main está el trabajo finalizado separado en 13 clases (comentadas para facilitar la comprensión del código), se han hecho ediciones y cambios a la versión de la expendedora creada en la Tarea 2 a favor de adecuarnos a las exigencias de la tarea 3.  
   
   Esta tarea fue realizada asignando partes  de trabajo equitativas a ambos integrantes.  
     
