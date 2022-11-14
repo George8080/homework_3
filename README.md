@@ -12,7 +12,7 @@
   
   Esta tarea fue realizada asignando partes  de trabajo equitativas a ambos integrantes.  
     
-  Diagrama UML  
+  Diagrama UML:
   
   ![](Tarea3.jpg)  
     
