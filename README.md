@@ -14,7 +14,7 @@
     
   Diagrama UML:
   
-  ![](Tarea3.jpg)  
+  ![](Tarea3.png)  
     
   Captura de Pantalla de la interfaz en el origen del proyecto:  
   
